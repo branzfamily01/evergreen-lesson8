@@ -73,11 +73,11 @@ function renderAnswerPanel(q) {
 
 function renderEx1() {
   document.getElementById('exercise1').innerHTML = `<div class="section-head"><div><div class="eyebrow">EXERCISE 1</div><h2>問題 1〜5</h2></div><p>問題タイトルには答えのヒントを入れていません。まず自分で考え、クリックして答えと理由を確認します。</p></div><div class="question-list">${ex1.map(q=>`
-    <article class="question-card"><div class="q-head"><span class="q-number">Q${q.id}</span><span class="q-type">空所補充</span></div><div class="q-ja">${q.ja}</div><div class="q-en">${q.en}</div><div class="card-actions">${audioButton(q.full)}<button class="reveal-btn">答え・解説を表示</button></div>${renderAnswerPanel(q)}</article>`).join('')}</div>`;
+    <article class="question-card"><div class="q-head"><span class="q-number">Q${q.id}</span><span class="q-type">空所補充</span></div><div class="q-ja">${q.ja}</div><div class="q-en">${q.en}</div><div class="card-actions">${audioButton(q.en.replace(/\(\s*\)/g, 'blank'))}<button class="reveal-btn">答え・解説を表示</button></div>${renderAnswerPanel(q)}</article>`).join('')}</div>`;
 }
 function renderEx2() {
   document.getElementById('exercise2').innerHTML = `<div class="section-head"><div><div class="eyebrow">EXERCISE 2</div><h2>問題 1〜4</h2></div><p>選択肢をクリックしてから、答えの理由と誤答の理由を確認します。</p></div><div class="question-list">${ex2.map(q=>`
-    <article class="question-card" data-correct="${escapeHtml(q.correct)}"><div class="q-head"><span class="q-number">Q${q.id}</span><span class="q-type">選択</span></div><div class="q-en">${q.prompt}</div>${audioButton(q.answer)}<div class="choices">${q.choices.map(c=>`<button class="choice-btn" data-choice="${escapeHtml(c)}">${escapeHtml(c)}</button>`).join('')}</div><button class="reveal-btn">答え・解説を表示</button>${renderAnswerPanel(q)}</article>`).join('')}</div>`;
+    <article class="question-card" data-correct="${escapeHtml(q.correct)}"><div class="q-head"><span class="q-number">Q${q.id}</span><span class="q-type">選択</span></div><div class="q-en">${q.prompt}</div>${audioButton(q.prompt)}<div class="choices">${q.choices.map(c=>`<button class="choice-btn" data-choice="${escapeHtml(c)}">${escapeHtml(c)}</button>`).join('')}</div><button class="reveal-btn">答え・解説を表示</button>${renderAnswerPanel(q)}</article>`).join('')}</div>`;
 }
 function renderEx3() {
   document.getElementById('exercise3').innerHTML = `<div class="section-head"><div><div class="eyebrow">EXERCISE 3</div><h2>問題 1〜5</h2></div><p>助動詞を機械的に一語訳せず、文全体で「能力・義務・推量」のどれかを判断します。</p></div><div class="question-list">${ex3.map(q=>`
